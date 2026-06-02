@@ -6,6 +6,13 @@
       "author:Neel Nanda"
     ]
   },
+  "2505.17630": {
+    "first_seen": "2026-06-02T18:19:02+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
   "2509.20784": {
     "first_seen": "2026-06-02T03:12:47+00:00",
     "score": 8,
@@ -226,6 +233,79 @@
   "2605.31558": {
     "first_seen": "2026-06-02T03:12:47+00:00",
     "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2606.00926": {
+    "first_seen": "2026-06-02T18:19:02+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2606.00930": {
+    "first_seen": "2026-06-02T18:19:02+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2606.00995": {
+    "first_seen": "2026-06-02T18:19:02+00:00",
+    "score": 7,
+    "tags": [
+      "author:Neel Nanda",
+      "topic"
+    ]
+  },
+  "2606.01033": {
+    "first_seen": "2026-06-02T18:19:02+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2606.01060": {
+    "first_seen": "2026-06-02T18:19:02+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry"
+    ]
+  },
+  "2606.01243": {
+    "first_seen": "2026-06-02T18:19:02+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2606.01302": {
+    "first_seen": "2026-06-02T18:19:02+00:00",
+    "score": 9,
+    "tags": [
+      "cites:belief-state-geometry",
+      "cites:constrained-belief-updates",
+      "topic"
+    ]
+  },
+  "2606.02061": {
+    "first_seen": "2026-06-02T18:19:02+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2606.02378": {
+    "first_seen": "2026-06-02T18:19:02+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2606.02385": {
+    "first_seen": "2026-06-02T18:19:02+00:00",
+    "score": 8,
     "tags": [
       "topic"
     ]
