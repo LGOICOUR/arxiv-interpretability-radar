@@ -1,0 +1,70 @@
+name: radar
+
+on:
+  # Daily at 14:00 UTC (≈7am Pacific; drifts an hour with DST, mornings either way).
+  # arXiv announces new submissions ~00:00 UTC, so this catches the prior batch
+  # with margin. lookback_hours=48 in config.yaml covers any missed run.
+  schedule:
+    - cron: "0 14 * * *"
+  # Manual "Run workflow" button (works from the GitHub mobile app too).
+  workflow_dispatch:
+
+# No `push` trigger on purpose: this job commits state back to main, which would
+# otherwise re-trigger itself into an infinite loop.
+
+permissions:
+  contents: write          # needed to commit the digest + dedup DB back
+
+concurrency:
+  group: radar
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run radar
+        id: radar
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+        # Python writes digest.html / digest.md / digests/<date>.md and updates
+        # the dedup DB. Email is sent by the next step, not by Python (--no-email).
+        run: python main.py --no-email
+
+      - name: Send email
+        if: steps.radar.outputs.has_content == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: luis.goicouria@gmail.com
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: "arXiv Interp Radar — ${{ steps.radar.outputs.today }}"
+          to: luis.goicouria@gmail.com
+          from: arXiv Radar <luis.goicouria@gmail.com>
+          html_body: file://digest.html
+          attachments: digests/${{ steps.radar.outputs.today }}.md
+
+      - name: Persist digest + dedup store
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data digests
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "radar: ${{ steps.radar.outputs.today }} digest [skip ci]"
+            git push
+          fi

@@ -1,0 +1,1 @@
+# Keeps the committed dedup DB (seen.sqlite) directory tracked on fresh clones.

@@ -1,0 +1,6 @@
+# Kept deliberately minimal. arXiv ingest talks to the export API directly with
+# requests + stdlib XML; SQLite and email ride on the standard library too.
+anthropic>=0.39
+requests>=2.31
+PyYAML>=6.0
+python-dotenv>=1.0

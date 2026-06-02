@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  OPTIONAL local scheduler. The live daily path is GitHub Actions
+  (.github/workflows/radar.yml). Use ONE or the other, not both, or you'll get
+  two emails a day and the two dedup DBs will diverge.
+
+  Install:
+    cp deploy/com.luisgoicouria.arxiv-radar.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.luisgoicouria.arxiv-radar.plist
+    launchctl start com.luisgoicouria.arxiv-radar   # run once now to test
+  Uninstall:
+    launchctl unload ~/Library/LaunchAgents/com.luisgoicouria.arxiv-radar.plist
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.luisgoicouria.arxiv-radar</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/luisgoicouria/Desktop/arxiv-interpretability-radar/.venv/bin/python</string>
+    <string>/Users/luisgoicouria/Desktop/arxiv-interpretability-radar/main.py</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/luisgoicouria/Desktop/arxiv-interpretability-radar</string>
+  <key>StartCalendarInterval</key>
+  <dict><key>Hour</key><integer>7</integer><key>Minute</key><integer>0</integer></dict>
+  <key>StandardOutPath</key>
+  <string>/Users/luisgoicouria/Desktop/arxiv-interpretability-radar/logs/out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/luisgoicouria/Desktop/arxiv-interpretability-radar/logs/err.log</string>
+</dict>
+</plist>

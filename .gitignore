@@ -1,0 +1,22 @@
+# Secrets — never commit
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Transient email artifacts (regenerated every run; the dated copies in
+# digests/ are the committed archive)
+digest.html
+digest.md
+
+# NOTE: data/seen.json (the dedup store) IS committed — that's how the cloud
+# run remembers what it already sent. It is intentionally not ignored.
+
+# Logs
+logs/
+*.log
+
+# macOS
+.DS_Store

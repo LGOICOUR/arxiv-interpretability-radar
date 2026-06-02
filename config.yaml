@@ -1,0 +1,88 @@
+# arXiv Interpretability Radar — all tunables live here.
+# Edit this file to reshape the digest; no code changes needed.
+
+# arXiv categories to ingest from (last `lookback_hours`).
+categories: [cs.LG, cs.CL, cs.AI, stat.ML]
+
+lookback_hours: 48          # daily run with margin for arXiv's batch timing
+score_threshold: 6          # keyword-path papers must score >= this to ship
+schedule_time: "07:00"      # documentation only; the live cron is in the workflow
+
+# Recipient. Overridden by the DIGEST_TO env var / GitHub secret if set.
+digest_to: "luis.goicouria@gmail.com"
+
+# --- Scoring -----------------------------------------------------------------
+# Sonnet 4.6 is the default: precision is the whole point of this tool and the
+# volume is tiny (a few cents/day). Swap to claude-haiku-4-5-20251001 to make
+# it nearly free at some cost to judgment.
+score_model: "claude-sonnet-4-6"
+
+# --- Ingest / citation knobs -------------------------------------------------
+max_ingest_results: 2000    # hard cap on how many recent papers we page through
+# Semantic Scholar's citation graph lags arXiv by days-to-weeks, so the
+# citation path uses its own (wider) window than the 48h ingest lookback.
+citation_lookback_days: 30
+
+# Citation alerts — highest-signal feed. Papers citing these ship unscored.
+anchors:
+  - id: "2405.15943"   # Shai et al., Transformers Represent Belief State Geometry...
+    name: "belief-state-geometry"
+  - id: "2501.16496"   # Sharkey et al., Open Problems in Mechanistic Interpretability
+    name: "open-problems"
+  - id: "2502.01954"   # Piotrowski/Riechers/Filan/Shai, Constrained Belief Updates
+    name: "constrained-belief-updates"
+
+# Watchlist — any new paper by these authors ships unscored.
+# (Seeded from the author map: Simplex core, comp-mech foundations, Goodfire/frontier interp.)
+authors:
+  # Simplex / belief-state core
+  - "Adam Shai"
+  - "Paul Riechers"
+  - "Sarah Marzen"
+  - "Lucas Teixeira"
+  - "Alexander Gietelink Oldenziel"
+  - "Mateusz Piotrowski"
+  - "Daniel Filan"
+  # Computational-mechanics foundations
+  - "James Crutchfield"
+  - "Cosma Shalizi"
+  # Goodfire / frontier-lab interpretability
+  - "Tom McGrath"
+  - "Lee Sharkey"
+  - "Neel Nanda"
+  - "Chris Olah"
+  - "Trenton Bricken"
+  - "Jack Lindsey"
+  - "Lucius Bushnaq"
+  - "Dan Braun"
+  # SLT / developmental interp
+  - "Daniel Murfet"
+  - "Jesse Hoogland"
+  # Academic neighbors
+  - "David Bau"
+  - "Naomi Saphra"
+  - "Jacob Andreas"
+  - "Aaron Mueller"
+  - "Mariya Toneva"
+
+keywords:
+  - "mechanistic interpretability"
+  - "belief state"
+  - "predictive state"
+  - "computational mechanics"
+  - "epsilon-machine"
+  - "ε-machine"
+  - "mixed-state presentation"
+  - "residual stream"
+  - "sparse autoencoder"
+  - "superposition"
+  - "polysemanticity"
+  - "feature absorption"
+  - "circuits"
+  - "singular learning theory"
+  - "developmental interpretability"
+  - "linear representation"
+  - "world model"
+  - "probing"
+  - "steering vector"
+  - "activation patching"
