@@ -18,8 +18,12 @@ DATA_DIR = PROJECT_ROOT / "data"
 SEEN_PATH = DATA_DIR / "seen.json"
 DIGESTS_DIR = PROJECT_ROOT / "digests"
 
-# Load .env once at import. override=False so real env vars (CI secrets) win.
-load_dotenv(PROJECT_ROOT / ".env", override=False)
+# Load .env at import, with the file authoritative locally (override=True) so a
+# blank/stale shell var — e.g. an empty ANTHROPIC_API_KEY injected by an editor's
+# terminal — can't shadow the real value in .env. In CI there is NO .env file
+# (it's gitignored), so load_dotenv is a no-op there and the workflow-injected
+# repository secrets are used untouched.
+load_dotenv(PROJECT_ROOT / ".env", override=True)
 
 
 def load():

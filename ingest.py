@@ -54,16 +54,32 @@ def _record(entry):
 
 
 def _get_page(session, params, max_retries=5):
+    """GET one page, retrying on transient network errors and 429/503.
+
+    export.arxiv.org is intermittently slow, so we use a generous read timeout
+    and back off on timeouts/connection errors as well as rate limits.
+    """
     delay = 5.0
     for attempt in range(max_retries):
-        r = session.get(API, params=params, timeout=30)
+        try:
+            r = session.get(API, params=params, timeout=(10, 60))
+        except requests.RequestException as e:
+            if attempt == max_retries - 1:
+                raise
+            print(f"  ! arXiv request error ({type(e).__name__}); "
+                  f"retrying in {delay:.0f}s")
+            time.sleep(delay)
+            delay *= 2
+            continue
         if r.status_code == 200:
             return r.text
         if r.status_code in (429, 503):
             if attempt == max_retries - 1:
                 r.raise_for_status()
-            print(f"  ! arXiv {r.status_code}; backing off {delay:.0f}s")
-            time.sleep(delay)
+            ra = r.headers.get("Retry-After", "")
+            wait = max(delay, float(ra)) if ra.isdigit() else delay
+            print(f"  ! arXiv {r.status_code}; backing off {wait:.0f}s")
+            time.sleep(wait)
             delay *= 2
             continue
         r.raise_for_status()
