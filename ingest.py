@@ -1,73 +1,41 @@
-"""Ingest: pull recent papers from the configured arXiv categories.
+"""Ingest: pull the latest new submissions from arXiv's per-category RSS feeds.
 
-Talks to the arXiv export API directly (requests + stdlib XML) rather than the
-`arxiv` package, which 429s on its default request pattern. arXiv asks for a
-descriptive User-Agent and <=1 request / 3 seconds; we honor both and back off
-on 429/503. We walk newest-first and stop as soon as we cross the cutoff.
+Why RSS and not the export query API: the query API aggressively 429s bursty
+and cloud IPs (GitHub Actions runners get blocked outright), which would zero
+out the author + keyword paths every day. The RSS feeds are CDN-served, not
+rate-limited, and are literally arXiv's "new announcements" feed — exactly what
+a daily radar wants. Each feed is the most recent announcement batch for one
+category; we keep genuinely-new papers (announce_type new/cross, skip the
+'replace' revisions of old papers) within the lookback window, deduped across
+categories.
 """
 
 import time
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from xml.etree import ElementTree as ET
 
 import requests
 
 import util
 
-API = "http://export.arxiv.org/api/query"
+RSS = "https://rss.arxiv.org/rss/{}"
 UA = ("arxiv-interpretability-radar/1.0 "
       "(https://github.com/LGOICOUR; mailto:luis.goicouria@gmail.com)")
-ATOM = "{http://www.w3.org/2005/Atom}"
-PAGE_SIZE = 100
+ARXIV_NS = "{http://arxiv.org/schemas/atom}"
+DC_NS = "{http://purl.org/dc/elements/1.1/}"
 
 
-def _text(el, tag):
-    child = el.find(tag)
-    return child.text if (child is not None and child.text) else ""
-
-
-def _parse_dt(s):
-    return datetime.fromisoformat(s.strip().replace("Z", "+00:00"))
-
-
-def _record(entry):
-    raw_id = _text(entry, ATOM + "id")
-    arxiv_id = util.short_id(raw_id)
-    pub = _parse_dt(_text(entry, ATOM + "published"))
-    authors = [_text(a, ATOM + "name") for a in entry.findall(ATOM + "author")]
-    cats = [c.get("term") for c in entry.findall(ATOM + "category") if c.get("term")]
-    rec = {
-        "id": arxiv_id,
-        "title": " ".join(_text(entry, ATOM + "title").split()),
-        "abstract": _text(entry, ATOM + "summary").strip(),
-        "authors": authors,
-        "categories": cats,
-        "published": pub.isoformat(),
-        "abs_url": util.abs_url(arxiv_id),
-        "pdf_url": util.pdf_url(arxiv_id),
-        "tags": [],
-        "source": "ingest",
-        "score": None,
-        "reason": None,
-    }
-    return rec, pub
-
-
-def _get_page(session, params, max_retries=5):
-    """GET one page, retrying on transient network errors and 429/503.
-
-    export.arxiv.org is intermittently slow, so we use a generous read timeout
-    and back off on timeouts/connection errors as well as rate limits.
-    """
-    delay = 5.0
+def _get(session, url, max_retries=4):
+    """GET with backoff on transient errors / 429 / 503 (RSS rarely needs it)."""
+    delay = 4.0
     for attempt in range(max_retries):
         try:
-            r = session.get(API, params=params, timeout=(10, 60))
+            r = session.get(url, timeout=(10, 60))
         except requests.RequestException as e:
             if attempt == max_retries - 1:
                 raise
-            print(f"  ! arXiv request error ({type(e).__name__}); "
-                  f"retrying in {delay:.0f}s")
+            print(f"  ! RSS request error ({type(e).__name__}); retrying in {delay:.0f}s")
             time.sleep(delay)
             delay *= 2
             continue
@@ -78,7 +46,7 @@ def _get_page(session, params, max_retries=5):
                 r.raise_for_status()
             ra = r.headers.get("Retry-After", "")
             wait = max(delay, float(ra)) if ra.isdigit() else delay
-            print(f"  ! arXiv {r.status_code}; backing off {wait:.0f}s")
+            print(f"  ! RSS {r.status_code}; backing off {wait:.0f}s")
             time.sleep(wait)
             delay *= 2
             continue
@@ -86,41 +54,78 @@ def _get_page(session, params, max_retries=5):
     return ""
 
 
-def fetch_recent(categories, lookback_hours, max_results=2000, delay_seconds=3.0):
-    """Return normalized records submitted within the last `lookback_hours`."""
+def _pubdate(item):
+    raw = item.findtext("pubDate", "")
+    try:
+        return parsedate_to_datetime(raw)
+    except (TypeError, ValueError):
+        return None
+
+
+def _record(item):
+    link = item.findtext("link", "") or ""
+    arxiv_id = util.short_id(link)
+    desc = item.findtext("description", "") or ""
+    abstract = desc.split("Abstract:", 1)[-1].strip() if "Abstract:" in desc else desc.strip()
+    creator = item.findtext(DC_NS + "creator", "") or ""
+    authors = [a.strip() for a in creator.split(",") if a.strip()]
+    cats = [c.text for c in item.findall("category") if c.text]
+    pub = _pubdate(item)
+    return {
+        "id": arxiv_id,
+        "title": " ".join((item.findtext("title", "") or "").split()),
+        "abstract": abstract,
+        "authors": authors,
+        "categories": cats,
+        "published": pub.isoformat() if pub else "",
+        "abs_url": util.abs_url(arxiv_id),
+        "pdf_url": util.pdf_url(arxiv_id),
+        "tags": [],
+        "source": "ingest",
+        "score": None,
+        "reason": None,
+    }
+
+
+def fetch_recent(categories, lookback_hours, max_results=2000, delay_seconds=1.0):
+    """Return new submissions from the category RSS feeds, deduped by ID."""
     cutoff = datetime.now(timezone.utc) - timedelta(hours=lookback_hours)
-    query = " OR ".join(f"cat:{c}" for c in categories)
     session = requests.Session()
     session.headers["User-Agent"] = UA
 
-    records, start, stop = [], 0, False
-    try:
-        while start < max_results and not stop:
-            xml = _get_page(session, {
-                "search_query": query,
-                "sortBy": "submittedDate",
-                "sortOrder": "descending",
-                "start": start,
-                "max_results": min(PAGE_SIZE, max_results - start),
-            })
-            entries = ET.fromstring(xml).findall(ATOM + "entry")
-            if not entries:
-                break  # end of results
-            for entry in entries:
-                if "/api/errors" in _text(entry, ATOM + "id"):
-                    continue
-                rec, pub = _record(entry)
-                if pub < cutoff:
-                    stop = True
-                    break
-                records.append(rec)
-            start += len(entries)
-            if not stop and start < max_results:
-                time.sleep(delay_seconds)  # arXiv politeness: <=1 req / 3s
-    except Exception as e:
-        print(f"  ! arXiv ingest stopped early ({type(e).__name__}: {e}); "
-              f"keeping {len(records)} record(s)")
+    by_id, skipped_old, skipped_replace = {}, 0, 0
+    for i, cat in enumerate(categories):
+        try:
+            xml = _get(session, RSS.format(cat))
+            channel = ET.fromstring(xml).find("channel")
+            items = channel.findall("item") if channel is not None else []
+        except Exception as e:
+            print(f"  ! RSS feed {cat} failed ({type(e).__name__}: {e}); skipping")
+            continue
 
-    print(f"  ingest: {len(records)} papers in the last {lookback_hours}h "
-          f"across {', '.join(categories)}")
-    return records
+        kept = 0
+        for item in items:
+            if (item.findtext(ARXIV_NS + "announce_type", "") or "") == "replace":
+                skipped_replace += 1
+                continue
+            pub = _pubdate(item)
+            if pub is not None and pub < cutoff:
+                skipped_old += 1
+                continue
+            rec = _record(item)
+            if not rec["id"] or not rec["title"]:
+                continue
+            if rec["id"] in by_id:                 # cross-listed in another feed
+                for c in rec["categories"]:
+                    if c not in by_id[rec["id"]]["categories"]:
+                        by_id[rec["id"]]["categories"].append(c)
+            elif len(by_id) < max_results:
+                by_id[rec["id"]] = rec
+                kept += 1
+        print(f"  ingest: {cat} feed -> {kept} new")
+        if i < len(categories) - 1:
+            time.sleep(delay_seconds)  # politeness between feeds
+
+    print(f"  ingest: {len(by_id)} unique new papers within {lookback_hours}h "
+          f"(skipped {skipped_replace} replacements, {skipped_old} older)")
+    return list(by_id.values())

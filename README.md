@@ -18,7 +18,7 @@ It runs two ways:
 ## How it works
 
 ```
-ingest (arXiv API, last N hours, cs.LG/cs.CL/cs.AI/stat.ML)
+ingest (arXiv RSS: new submissions in cs.LG/cs.CL/cs.AI/stat.ML)
    │
    ├── citation path ── Semantic Scholar: papers citing the ANCHORS (last N days)
    │
@@ -167,7 +167,7 @@ instead).
 |------|------|
 | `config.yaml` | **The file you'll edit** — anchors, authors, keywords, threshold |
 | `main.py` | Orchestrator + CLI flags |
-| `ingest.py` | arXiv export API → normalized records (requests + stdlib XML) |
+| `ingest.py` | arXiv RSS feeds → normalized records (requests + stdlib XML) |
 | `citations.py` | Semantic Scholar citers of each anchor |
 | `filter.py` | Author + keyword matching (handles `F. Last` and ε-machine variants) |
 | `score.py` | Claude relevance gate (keyword path only) |
@@ -185,10 +185,16 @@ instead).
   dedup state has to live somewhere persistent. It's a small, sorted JSON file,
   so each day's commit is a clean text diff (just the new IDs) and the cloud run
   stays the single source of truth — no binary churn in the public history.
-- **arXiv politeness** — ingest paginates at ≤1 request / 3s with a descriptive
-  User-Agent and backs off on 429/503.
-- **Weekend digests are thin** — arXiv submission volume drops on weekends, so a
-  Monday-morning run over the prior 48h is naturally short. That's expected.
+- **Why RSS, not the export query API?** The export query API
+  (`export.arxiv.org/api/query`) aggressively returns HTTP 429 to bursty and
+  cloud IPs — it blocks GitHub Actions runners outright, which silently zeroed
+  the author + keyword paths. The per-category RSS feeds (`rss.arxiv.org`) are
+  CDN-served, not rate-limited, and are exactly arXiv's "new submissions" feed.
+  Ingest keeps `new`/`cross` announcements (skips `replace` revisions) within
+  the lookback window. One consequence: RSS exposes the latest announcement
+  batch, so `--since` filters within it rather than paging arbitrarily far back.
+- **Weekend digests are thin** — arXiv doesn't announce on weekends, so a
+  Monday run is naturally short. The citation path (30-day window) still fires.
 
 ## Roadmap (stretch goals)
 
