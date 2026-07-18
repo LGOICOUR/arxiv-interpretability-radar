@@ -1687,6 +1687,13 @@
       "cites:constrained-belief-updates"
     ]
   },
+  "s2:d4bc1618ee9bdd1b1037093c62b5541150357e7a": {
+    "first_seen": "2026-07-18T14:53:23+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry"
+    ]
+  },
   "s2:f780815c0f571ed8b72aaf21a9fdf69521126103": {
     "first_seen": "2026-06-27T15:16:41+00:00",
     "score": null,
