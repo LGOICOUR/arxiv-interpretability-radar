@@ -239,6 +239,13 @@
       "topic"
     ]
   },
+  "2604.15010": {
+    "first_seen": "2026-07-20T15:52:01+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
   "2604.22027": {
     "first_seen": "2026-07-01T16:32:45+00:00",
     "score": null,
@@ -1661,6 +1668,28 @@
   "2607.15175": {
     "first_seen": "2026-07-17T15:15:24+00:00",
     "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2607.15495": {
+    "first_seen": "2026-07-20T15:52:01+00:00",
+    "score": null,
+    "tags": [
+      "author:Mateusz Piotrowski",
+      "author:Jack Lindsey"
+    ]
+  },
+  "2607.15693": {
+    "first_seen": "2026-07-20T15:52:01+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2607.15893": {
+    "first_seen": "2026-07-20T15:52:01+00:00",
+    "score": 7,
     "tags": [
       "topic"
     ]
