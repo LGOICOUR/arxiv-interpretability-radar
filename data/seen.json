@@ -119,6 +119,13 @@
       "topic"
     ]
   },
+  "2511.08436": {
+    "first_seen": "2026-07-22T15:44:34+00:00",
+    "score": null,
+    "tags": [
+      "author:Naomi Saphra"
+    ]
+  },
   "2512.07355": {
     "first_seen": "2026-06-09T16:44:58+00:00",
     "score": 6,
@@ -144,6 +151,13 @@
   "2601.06599": {
     "first_seen": "2026-06-09T16:44:58+00:00",
     "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2601.18930": {
+    "first_seen": "2026-07-22T15:44:34+00:00",
+    "score": 6,
     "tags": [
       "topic"
     ]
@@ -1743,6 +1757,13 @@
       "topic"
     ]
   },
+  "2607.17060": {
+    "first_seen": "2026-07-22T15:44:34+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry"
+    ]
+  },
   "2607.17117": {
     "first_seen": "2026-07-21T15:46:27+00:00",
     "score": 6,
@@ -1773,6 +1794,36 @@
   },
   "2607.18114": {
     "first_seen": "2026-07-21T15:46:27+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2607.18348": {
+    "first_seen": "2026-07-22T15:44:34+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2607.18589": {
+    "first_seen": "2026-07-22T15:44:34+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2607.18804": {
+    "first_seen": "2026-07-22T15:44:34+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry",
+      "cites:constrained-belief-updates",
+      "author:Daniel Murfet"
+    ]
+  },
+  "2607.18921": {
+    "first_seen": "2026-07-22T15:44:34+00:00",
     "score": 6,
     "tags": [
       "topic"
