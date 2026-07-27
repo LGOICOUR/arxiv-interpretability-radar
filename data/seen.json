@@ -1893,11 +1893,25 @@
       "topic"
     ]
   },
+  "2607.22305": {
+    "first_seen": "2026-07-27T16:22:03+00:00",
+    "score": null,
+    "tags": [
+      "author:Jacob Andreas"
+    ]
+  },
   "s2:6b25a08363aa31e5bf9f5659c1c43c40589c7699": {
     "first_seen": "2026-07-12T14:57:22+00:00",
     "score": null,
     "tags": [
       "cites:belief-state-geometry"
+    ]
+  },
+  "s2:b4936b5a9fee53610740cb0f17802f59322c0a1c": {
+    "first_seen": "2026-07-27T16:22:03+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
     ]
   },
   "s2:cb24fc487002ea04128b70c73f8b97553e84ae79": {
