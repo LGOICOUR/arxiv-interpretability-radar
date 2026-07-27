@@ -36,6 +36,12 @@ def _gh_output(**kv):
             f.write(f"{k}={v}\n")
 
 
+def _gh_warning(msg):
+    """Surface a warning annotation in the Actions run summary."""
+    if os.environ.get("GITHUB_ACTIONS"):
+        print(f"::warning title=Radar scoring path::{msg}")
+
+
 def _merge(into, rec):
     """Merge rec into an existing same-ID record: union tags, fill score/abstract."""
     for t in rec.get("tags", []):
@@ -84,7 +90,10 @@ def main():
     citers = citations.fetch_anchor_citers(cfg["anchors"], cfg["citation_lookback_days"])
     author_hits = filter.match_authors(ingested, cfg["authors"])
     keyword_hits = filter.match_keywords(ingested, cfg["keywords"])
-    scored = score.score_papers(keyword_hits, cfg["score_threshold"], cfg["score_model"])
+    scored, score_stats = score.score_papers(keyword_hits, cfg["score_threshold"],
+                                             cfg["score_model"])
+    if score_stats["failure"]:
+        _gh_warning(score_stats["failure"])
 
     # --- Merge + dedup by ID (priority: citers > authors > scored) -----------
     chosen = {}
@@ -96,8 +105,16 @@ def main():
             chosen[rid] = rec
     final = list(chosen.values())
 
-    # Dedup across runs: never ship a paper twice.
+    # Dedup across runs: never ship a paper twice. Track *what* got suppressed
+    # so the digest can say so — otherwise a day where good papers were all
+    # repeats is indistinguishable from a day where nothing cleared the bar.
+    candidates = final
     final = store.filter_unseen(final, config.SEEN_PATH)
+    shipped_ids = {r["id"] for r in final}
+    suppressed = {"cites": 0, "author": 0, "topic": 0}
+    for rec in candidates:
+        if rec["id"] not in shipped_ids:
+            suppressed[_bucket_of(rec)] += 1
 
     # --- Bucket + rank -------------------------------------------------------
     buckets = {"cites": [], "author": [], "topic": []}
@@ -108,7 +125,8 @@ def main():
     buckets["topic"].sort(key=lambda r: (r.get("score") or 0, r["published"]), reverse=True)
 
     total = len(final)
-    md = render.render_markdown(date_str, buckets)
+    md = render.render_markdown(date_str, buckets, suppressed=suppressed,
+                                score_failure=score_stats["failure"])
     html = render.markdown_to_html(md)
     has_content = total > 0
 

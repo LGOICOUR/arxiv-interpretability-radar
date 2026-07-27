@@ -32,11 +32,18 @@ def _meta_line(r, kind):
         parts += [f"`{t}`" for t in r["tags"] if t.startswith("author:")]
     elif kind == "topic":
         parts.append("`topic`")
-        scored = f"**{r['score']}/10**" if r.get("score") is not None else ""
-        if r.get("reason"):
-            scored = f"{scored} — {r['reason']}" if scored else r["reason"]
-        if scored:
-            parts.append(scored)
+
+    # A paper can hit several paths at once — an anchor-citer that also clears
+    # the score threshold gets merged into the cites bucket, and its score used
+    # to vanish here because only the topic branch rendered one. Those
+    # dual-signal papers are the highest-value ones in the digest, so show the
+    # score and reason wherever we have them.
+    scored = f"**{r['score']}/10**" if r.get("score") is not None else ""
+    if r.get("reason"):
+        scored = f"{scored} — {r['reason']}" if scored else r["reason"]
+    if scored:
+        parts.append(scored)
+
     if r.get("pdf_url"):
         parts.append(f"[PDF]({r['pdf_url']})")
     return " · ".join(parts)
@@ -50,8 +57,34 @@ def _entry(r, kind):
     return f"{head}\n  {_meta_line(r, kind)}"
 
 
-def render_markdown(date_str, buckets):
-    """buckets: {'cites': [...], 'author': [...], 'topic': [...]}"""
+def _suppressed_line(suppressed):
+    """One line explaining what dedup held back, or None if it held back nothing.
+
+    Without this, a digest reading '0 topic match(es)' is ambiguous between
+    'the scorer found nothing good' and 'the scorer found good papers you have
+    already been sent' — which is the common case once the dedup store fills up.
+    """
+    if not suppressed:
+        return None
+    total = sum(suppressed.values())
+    if not total:
+        return None
+
+    labels = [("cites", "citation"), ("author", "author"), ("topic", "topic")]
+    parts = [f"{suppressed[k]} {label}" for k, label in labels if suppressed.get(k)]
+    line = f"Held back {total} paper(s) already sent — {', '.join(parts)}."
+    if suppressed.get("topic"):
+        line += (f" The {suppressed['topic']} topic paper(s) cleared the score "
+                 f"threshold today but went out in an earlier digest.")
+    return f"_{line}_"
+
+
+def render_markdown(date_str, buckets, suppressed=None, score_failure=None):
+    """buckets: {'cites': [...], 'author': [...], 'topic': [...]}
+
+    suppressed:    {'cites': n, 'author': n, 'topic': n} held back by dedup.
+    score_failure: human-readable string if the scoring path itself went down.
+    """
     total = sum(len(buckets.get(k, [])) for k, _ in SECTIONS)
     lines = [f"# arXiv Interpretability Radar — {date_str}", ""]
 
@@ -60,9 +93,24 @@ def render_markdown(date_str, buckets):
                f"{len(buckets.get('topic', []))} topic match(es)._")
     lines += [summary, ""]
 
+    held = _suppressed_line(suppressed)
+    if held:
+        lines += [held, ""]
+
+    if score_failure:
+        lines += [f"**⚠️ Scoring path unavailable — {score_failure}.** Topic "
+                  f"matches are missing from this digest; the citation and "
+                  f"author paths are unaffected.", ""]
+
     if total == 0:
-        lines += ["No new papers cleared the bar today. (That's the point — "
-                  "precision over recall.)", ""]
+        if held:
+            lines += ["Everything that cleared the bar today had already been "
+                      "sent.", ""]
+        elif not score_failure:
+            # Only claim a quiet day when the scorer actually ran; otherwise the
+            # banner above is the explanation and this would contradict it.
+            lines += ["No new papers cleared the bar today. (That's the point — "
+                      "precision over recall.)", ""]
 
     for key, title in SECTIONS:
         items = buckets.get(key, [])

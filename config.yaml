@@ -12,10 +12,15 @@ schedule_time: "07:00"      # documentation only; the live cron is in the workfl
 digest_to: "luis.goicouria@gmail.com"
 
 # --- Scoring -----------------------------------------------------------------
-# Sonnet 4.6 is the default: precision is the whole point of this tool and the
+# Sonnet 5 is the default: precision is the whole point of this tool and the
 # volume is tiny (a few cents/day). Swap to claude-haiku-4-5-20251001 to make
 # it nearly free at some cost to judgment.
-score_model: "claude-sonnet-4-6"
+# Keep this pinned to a *current* model. When a model ID is retired every
+# scoring call errors, the topic path silently drops to zero, and the digest
+# still ships on the trusted paths — so the outage is invisible from the email
+# unless something says so. score.py now detects the all-errored case and
+# render.py puts a banner in the digest.
+score_model: "claude-sonnet-5"
 
 # --- Ingest / citation knobs -------------------------------------------------
 max_ingest_results: 2000    # hard cap on how many recent papers we page through

@@ -58,15 +58,26 @@ def _parse(text):
 
 
 def score_papers(records, threshold, model, api_key=None):
-    """Score each record; return only those meeting the threshold."""
+    """Score each record; return (kept, stats) — kept = those meeting threshold.
+
+    `stats["failure"]` is a human-readable string when the *whole* path went
+    down (no API key, or every single call errored) rather than papers simply
+    not clearing the bar. That distinction is the point: a dead scorer and a
+    genuinely quiet day both produce zero topic matches, but only one of them
+    is a problem, and the digest used to render them identically.
+    """
+    stats = {"attempted": len(records), "kept": 0, "dropped": 0,
+             "errored": 0, "failure": None}
     if not records:
-        return []
+        return [], stats
 
     api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
+        stats["failure"] = (f"ANTHROPIC_API_KEY is not set, so {len(records)} "
+                            f"keyword candidate(s) went unscored")
         print(f"  ! ANTHROPIC_API_KEY not set — skipping {len(records)} "
               f"keyword candidate(s) (trusted paths still ship)")
-        return []
+        return [], stats
 
     from anthropic import Anthropic
     client = Anthropic(api_key=api_key)
@@ -75,10 +86,14 @@ def score_papers(records, threshold, model, api_key=None):
     for i, r in enumerate(records, 1):
         user = f"Title: {r['title']}\n\nAbstract: {r['abstract']}"
         try:
+            # No `temperature`: current-generation models reject it outright
+            # ("`temperature` is deprecated for this model"), which would fail
+            # every call. We lose exact reproducibility, which costs little here
+            # — each paper is scored once ever, then remembered by the dedup
+            # store, so a borderline score can't flip on a later run.
             msg = client.messages.create(
                 model=model,
                 max_tokens=300,
-                temperature=0,
                 system=SYSTEM,
                 messages=[{"role": "user", "content": user}],
             )
@@ -102,6 +117,16 @@ def score_papers(records, threshold, model, api_key=None):
         else:
             dropped += 1
 
+    stats.update(kept=len(kept), dropped=dropped, errored=errored)
     print(f"  scored {len(records)} -> kept {len(kept)} (>= {threshold}), "
           f"dropped {dropped}, errored {errored}")
-    return kept
+
+    # Every call failing is categorically different from every paper scoring
+    # low — most likely a retired model ID, a bad key, or an API outage.
+    if errored == len(records):
+        stats["failure"] = (f"all {len(records)} scoring call(s) failed against "
+                            f"model '{model}'")
+        print(f"  !! SCORING PATH DEAD — {stats['failure']}. The digest will "
+              f"still ship, but without any topic matches.")
+
+    return kept, stats

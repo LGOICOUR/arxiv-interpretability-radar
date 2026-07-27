@@ -28,7 +28,7 @@ ingest (arXiv RSS: new submissions in cs.LG/cs.CL/cs.AI/stat.ML)
                               │
                         LLM relevance scoring (Claude) → keep score ≥ threshold
    │
-merge + dedup (SQLite of seen IDs) → rank → render Markdown → deliver (email + file)
+merge + dedup (JSON store of seen IDs) → rank → render Markdown → deliver (email + file)
 ```
 
 Three signal paths feed one ranked digest:
@@ -84,9 +84,11 @@ Everything tunable lives in [`config.yaml`](config.yaml):
 - **`score_threshold`** — keyword-path papers must score ≥ this (0–10). Starts
   at **6**. Keep it high for the first week, then lower one notch if you feel
   you're missing things. Over-filtering is the safer failure here.
-- **`score_model`** — `claude-sonnet-4-6` by default (precision matters and the
+- **`score_model`** — `claude-sonnet-5` by default (precision matters and the
   volume is a few cents/day). Swap to `claude-haiku-4-5-20251001` to make it
-  nearly free.
+  nearly free. Keep this on a current model: when an ID is retired every call
+  errors and the topic path silently empties while the trusted paths keep
+  shipping. The digest now prints a warning banner if that ever happens.
 - **`citation_lookback_days`** — wider than the ingest window (default 30),
   because Semantic Scholar's citation graph lags arXiv by weeks.
 

@@ -41,9 +41,21 @@ def init_store(path):
 
 
 def filter_unseen(records, path):
-    """Return only the records whose ID isn't already in the store."""
+    """Return only the records whose ID isn't already in the store.
+
+    Papers legitimately resurface across runs — the citation path re-finds the
+    same citers for the whole `citation_lookback_days` window, and an RSS batch
+    can span more than one run. Suppressing them is the point; *logging* the
+    count is what keeps a thin digest interpretable, because "nothing scored
+    well today" and "everything that scored well was a repeat" are very
+    different days that otherwise look identical.
+    """
     seen = _load(path)
-    return [r for r in records if r["id"] not in seen]
+    unseen = [r for r in records if r["id"] not in seen]
+    dropped = len(records) - len(unseen)
+    if dropped:
+        print(f"  dedup: {dropped} already-sent paper(s) suppressed")
+    return unseen
 
 
 def mark_seen(records, path):
