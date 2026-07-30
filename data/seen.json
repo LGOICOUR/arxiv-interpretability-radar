@@ -1970,6 +1970,27 @@
       "topic"
     ]
   },
+  "2607.26946": {
+    "first_seen": "2026-07-30T15:52:51+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry"
+    ]
+  },
+  "2607.27017": {
+    "first_seen": "2026-07-30T15:52:51+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2607.27092": {
+    "first_seen": "2026-07-30T15:52:51+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
   "s2:6b25a08363aa31e5bf9f5659c1c43c40589c7699": {
     "first_seen": "2026-07-12T14:57:22+00:00",
     "score": null,
