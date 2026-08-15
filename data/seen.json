@@ -2294,6 +2294,13 @@
       "cites:belief-state-geometry"
     ]
   },
+  "s2:d80ac2a1475b3280f11eacd2797a3d6d0e3f8737": {
+    "first_seen": "2026-08-15T14:22:59+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
+    ]
+  },
   "s2:f780815c0f571ed8b72aaf21a9fdf69521126103": {
     "first_seen": "2026-06-27T15:16:41+00:00",
     "score": null,
