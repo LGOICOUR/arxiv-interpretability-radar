@@ -2361,6 +2361,22 @@
       "cites:belief-state-geometry"
     ]
   },
+  "2609.04463": {
+    "first_seen": "2026-09-07T18:37:24+00:00",
+    "score": null,
+    "tags": [
+      "author:Jacob Andreas",
+      "topic"
+    ]
+  },
+  "2609.04661": {
+    "first_seen": "2026-09-07T18:37:24+00:00",
+    "score": null,
+    "tags": [
+      "author:Daniel Murfet",
+      "topic"
+    ]
+  },
   "s2:67b5900953e4a5484664aac15cc7613dc7820c0a": {
     "first_seen": "2026-08-30T17:57:46+00:00",
     "score": null,
