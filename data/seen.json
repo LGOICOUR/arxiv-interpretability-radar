@@ -20,6 +20,14 @@
       "topic"
     ]
   },
+  "2504.08075": {
+    "first_seen": "2026-09-15T17:58:20+00:00",
+    "score": null,
+    "tags": [
+      "author:Daniel Murfet",
+      "topic"
+    ]
+  },
   "2505.17630": {
     "first_seen": "2026-06-02T18:19:02+00:00",
     "score": 6,
@@ -2410,6 +2418,13 @@
     "score": null,
     "tags": [
       "author:Aaron Mueller"
+    ]
+  },
+  "2609.15289": {
+    "first_seen": "2026-09-15T17:58:20+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
     ]
   },
   "s2:67b5900953e4a5484664aac15cc7613dc7820c0a": {
