@@ -36,6 +36,8 @@ anchors:
     name: "open-problems"
   - id: "2502.01954"   # Piotrowski/Riechers/Filan/Shai, Constrained Belief Updates
     name: "constrained-belief-updates"
+  - id: "2609.17376"   # Balcells/Lee/Rastogi/Riechers/Shai/Poncini, LLMs Develop Belief State Geometry In-Context
+    name: "belief-state-in-context"
 
 # Watchlist — any new paper by these authors ships unscored.
 # (Seeded from the author map: Simplex core, comp-mech foundations, Goodfire/frontier interp.)
