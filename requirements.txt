@@ -1,6 +1,8 @@
 # Kept deliberately minimal. arXiv ingest talks to the export API directly with
 # requests + stdlib XML; SQLite and email ride on the standard library too.
-anthropic>=0.39
+# Pinned to the 1.x line: an unpinned upgrade to 1.x removed `temperature` from
+# messages.create() and silently broke every scoring call for weeks. Tested on 1.9.0.
+anthropic>=1.9,<2
 requests>=2.31
 PyYAML>=6.0
 python-dotenv>=1.0

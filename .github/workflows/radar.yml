@@ -68,3 +68,11 @@ jobs:
             git commit -m "radar: ${{ steps.radar.outputs.today }} digest [skip ci]"
             git push
           fi
+
+      # Runs last, after the digest is saved: if every topic-scoring call failed,
+      # mark the run red so GitHub's failed-workflow email says so.
+      - name: Fail if topic scoring is down
+        if: steps.radar.outputs.score_failed == 'true'
+        run: |
+          echo "::error::Topic scoring failed for every candidate (see the 'Run radar' log). The digest shipped with anchor and watchlist papers only."
+          exit 1

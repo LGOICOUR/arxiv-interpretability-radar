@@ -149,7 +149,10 @@ def main():
     elif not has_content:
         print("  (empty digest — nothing emailed)")
 
-    _gh_output(today=date_str, has_content=str(has_content).lower())
+    # The workflow fails the run on this flag after the digest is saved, so a dead
+    # scorer shows up as a red run (and GitHub's failure email), not just a banner.
+    _gh_output(today=date_str, has_content=str(has_content).lower(),
+               score_failed=str(bool(score_stats["failure"])).lower())
     return 0
 
 
