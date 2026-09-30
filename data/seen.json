@@ -2534,8 +2534,36 @@
       "topic"
     ]
   },
+  "2609.33150": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2609.33883": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
   "2609.33940": {
     "first_seen": "2026-09-29T19:37:13+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2609.34043": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2609.34058": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
     "score": 6,
     "tags": [
       "topic"
@@ -2550,6 +2578,13 @@
   },
   "2609.34571": {
     "first_seen": "2026-09-29T19:37:13+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2609.34599": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
     "score": 6,
     "tags": [
       "topic"
@@ -2576,6 +2611,14 @@
       "topic"
     ]
   },
+  "2609.35161": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry",
+      "cites:constrained-belief-updates"
+    ]
+  },
   "2609.35210": {
     "first_seen": "2026-09-29T19:37:13+00:00",
     "score": 8,
@@ -2588,6 +2631,13 @@
     "score": 8,
     "tags": [
       "topic"
+    ]
+  },
+  "2609.35378": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
     ]
   },
   "2609.35475": {
@@ -2628,6 +2678,48 @@
   "2609.35686": {
     "first_seen": "2026-09-29T19:37:13+00:00",
     "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2609.35890": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2609.36265": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2609.36490": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry"
+    ]
+  },
+  "2609.37731": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
+    ]
+  },
+  "2609.37824": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry"
+    ]
+  },
+  "2609.37857": {
+    "first_seen": "2026-09-30T18:54:51+00:00",
+    "score": 6,
     "tags": [
       "topic"
     ]
