@@ -311,6 +311,13 @@
       "topic"
     ]
   },
+  "2603.04317": {
+    "first_seen": "2026-10-07T19:48:38+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
   "2603.06592": {
     "first_seen": "2026-07-15T15:31:44+00:00",
     "score": 7,
@@ -456,6 +463,13 @@
     "score": null,
     "tags": [
       "cites:open-problems"
+    ]
+  },
+  "2605.12922": {
+    "first_seen": "2026-10-07T19:48:38+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
     ]
   },
   "2605.13329": {
@@ -3017,6 +3031,62 @@
     "score": 8,
     "tags": [
       "cites:belief-state-geometry",
+      "topic"
+    ]
+  },
+  "2610.06903": {
+    "first_seen": "2026-10-07T19:48:38+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.07130": {
+    "first_seen": "2026-10-07T19:48:38+00:00",
+    "score": null,
+    "tags": [
+      "author:Jacob Andreas"
+    ]
+  },
+  "2610.07186": {
+    "first_seen": "2026-10-07T19:48:38+00:00",
+    "score": null,
+    "tags": [
+      "author:David Bau"
+    ]
+  },
+  "2610.07389": {
+    "first_seen": "2026-10-07T19:48:38+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.07646": {
+    "first_seen": "2026-10-07T19:48:38+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
+    ]
+  },
+  "2610.08018": {
+    "first_seen": "2026-10-07T19:48:38+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.08544": {
+    "first_seen": "2026-10-07T19:48:38+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.08559": {
+    "first_seen": "2026-10-07T19:48:38+00:00",
+    "score": 6,
+    "tags": [
       "topic"
     ]
   },
