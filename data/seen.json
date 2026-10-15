@@ -3237,6 +3237,20 @@
       "topic"
     ]
   },
+  "2610.14958": {
+    "first_seen": "2026-10-15T18:05:36+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.15314": {
+    "first_seen": "2026-10-15T18:05:36+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry"
+    ]
+  },
   "2610.15429": {
     "first_seen": "2026-10-14T18:23:29+00:00",
     "score": 6,
@@ -3293,6 +3307,13 @@
       "topic"
     ]
   },
+  "2610.18127": {
+    "first_seen": "2026-10-15T18:05:36+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
   "2610.18331": {
     "first_seen": "2026-10-14T18:23:29+00:00",
     "score": 6,
@@ -3310,6 +3331,43 @@
   "2610.18462": {
     "first_seen": "2026-10-14T18:23:29+00:00",
     "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.19238": {
+    "first_seen": "2026-10-15T18:05:36+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry",
+      "author:Adam Shai",
+      "author:Paul Riechers"
+    ]
+  },
+  "2610.19359": {
+    "first_seen": "2026-10-15T18:05:36+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.19934": {
+    "first_seen": "2026-10-15T18:05:36+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.20067": {
+    "first_seen": "2026-10-15T18:05:36+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.20139": {
+    "first_seen": "2026-10-15T18:05:36+00:00",
+    "score": 9,
     "tags": [
       "topic"
     ]
