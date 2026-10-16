@@ -255,6 +255,13 @@
       "topic"
     ]
   },
+  "2602.04212": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
   "2602.04718": {
     "first_seen": "2026-07-10T16:29:56+00:00",
     "score": 6,
@@ -3367,6 +3374,108 @@
   },
   "2610.20139": {
     "first_seen": "2026-10-15T18:05:36+00:00",
+    "score": 9,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.20680": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": 7,
+    "tags": [
+      "cites:open-problems",
+      "topic"
+    ]
+  },
+  "2610.20748": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": 8,
+    "tags": [
+      "author:Lee Sharkey",
+      "author:Lucius Bushnaq",
+      "author:Dan Braun",
+      "topic"
+    ]
+  },
+  "2610.20763": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.20851": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": 9,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.21182": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.21240": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.21261": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.21456": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.21508": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": null,
+    "tags": [
+      "author:Mariya Toneva"
+    ]
+  },
+  "2610.21518": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": null,
+    "tags": [
+      "author:Mariya Toneva"
+    ]
+  },
+  "2610.21708": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.21901": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry"
+    ]
+  },
+  "2610.22127": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.22169": {
+    "first_seen": "2026-10-16T17:51:04+00:00",
     "score": 9,
     "tags": [
       "topic"
