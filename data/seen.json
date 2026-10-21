@@ -3537,6 +3537,13 @@
       "topic"
     ]
   },
+  "2610.24239": {
+    "first_seen": "2026-10-21T18:28:21+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
   "2610.24521": {
     "first_seen": "2026-10-20T18:25:29+00:00",
     "score": 8,
@@ -3573,6 +3580,13 @@
       "topic"
     ]
   },
+  "2610.25341": {
+    "first_seen": "2026-10-21T18:28:21+00:00",
+    "score": null,
+    "tags": [
+      "cites:constrained-belief-updates"
+    ]
+  },
   "2610.25464": {
     "first_seen": "2026-10-20T18:25:29+00:00",
     "score": 7,
@@ -3606,6 +3620,20 @@
     "score": 7,
     "tags": [
       "topic"
+    ]
+  },
+  "2610.28090": {
+    "first_seen": "2026-10-21T18:28:21+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.28255": {
+    "first_seen": "2026-10-21T18:28:21+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
     ]
   },
   "s2:1eb7fac67af5e0fbbd63ed51296ffbd198f75585": {
