@@ -112,6 +112,13 @@
       "topic"
     ]
   },
+  "2509.25045": {
+    "first_seen": "2026-10-22T18:22:15+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
   "2510.00845": {
     "first_seen": "2026-06-02T03:12:47+00:00",
     "score": 6,
@@ -328,6 +335,13 @@
   "2603.02491": {
     "first_seen": "2026-06-30T16:32:34+00:00",
     "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2603.03328": {
+    "first_seen": "2026-10-22T18:22:15+00:00",
+    "score": 6,
     "tags": [
       "topic"
     ]
@@ -3634,6 +3648,28 @@
     "score": null,
     "tags": [
       "cites:open-problems"
+    ]
+  },
+  "2610.28753": {
+    "first_seen": "2026-10-22T18:22:15+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.28992": {
+    "first_seen": "2026-10-22T18:22:15+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.29340": {
+    "first_seen": "2026-10-22T18:22:15+00:00",
+    "score": 8,
+    "tags": [
+      "cites:belief-state-geometry",
+      "topic"
     ]
   },
   "s2:1eb7fac67af5e0fbbd63ed51296ffbd198f75585": {
