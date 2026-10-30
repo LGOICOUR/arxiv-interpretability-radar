@@ -3826,6 +3826,90 @@
       "topic"
     ]
   },
+  "2610.37676": {
+    "first_seen": "2026-10-30T19:02:43+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.37685": {
+    "first_seen": "2026-10-30T19:02:43+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.37796": {
+    "first_seen": "2026-10-30T19:02:43+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry"
+    ]
+  },
+  "2610.38067": {
+    "first_seen": "2026-10-30T19:02:43+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.38326": {
+    "first_seen": "2026-10-30T19:02:43+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.38532": {
+    "first_seen": "2026-10-30T19:02:43+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.38903": {
+    "first_seen": "2026-10-30T19:02:43+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.38911": {
+    "first_seen": "2026-10-30T19:02:43+00:00",
+    "score": null,
+    "tags": [
+      "author:Aaron Mueller"
+    ]
+  },
+  "2610.39068": {
+    "first_seen": "2026-10-30T19:02:43+00:00",
+    "score": 9,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.39182": {
+    "first_seen": "2026-10-30T19:02:43+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.40328": {
+    "first_seen": "2026-10-30T19:02:43+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry"
+    ]
+  },
+  "2610.40655": {
+    "first_seen": "2026-10-30T19:02:43+00:00",
+    "score": null,
+    "tags": [
+      "author:David Bau"
+    ]
+  },
   "s2:1eb7fac67af5e0fbbd63ed51296ffbd198f75585": {
     "first_seen": "2026-09-23T18:17:16+00:00",
     "score": null,
