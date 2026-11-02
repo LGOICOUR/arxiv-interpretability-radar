@@ -3952,6 +3952,14 @@
       "cites:open-problems"
     ]
   },
+  "s2:9fdb8e473c687dfebeab062fe7d12ba2fddeeeac": {
+    "first_seen": "2026-11-02T22:38:25+00:00",
+    "score": null,
+    "tags": [
+      "cites:belief-state-geometry",
+      "cites:constrained-belief-updates"
+    ]
+  },
   "s2:b4936b5a9fee53610740cb0f17802f59322c0a1c": {
     "first_seen": "2026-07-27T16:22:03+00:00",
     "score": null,
