@@ -4157,6 +4157,13 @@
       "topic"
     ]
   },
+  "2611.10936": {
+    "first_seen": "2026-11-11T21:06:17+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
+    ]
+  },
   "2611.11531": {
     "first_seen": "2026-11-10T20:44:56+00:00",
     "score": 6,
@@ -4170,6 +4177,13 @@
     "tags": [
       "author:Aaron Mueller",
       "topic"
+    ]
+  },
+  "2611.11862": {
+    "first_seen": "2026-11-11T21:06:17+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
     ]
   },
   "2611.11892": {
@@ -4197,6 +4211,42 @@
     "first_seen": "2026-11-10T20:44:56+00:00",
     "score": 8,
     "tags": [
+      "topic"
+    ]
+  },
+  "2611.13322": {
+    "first_seen": "2026-11-11T21:06:17+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.13548": {
+    "first_seen": "2026-11-11T21:06:17+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.14168": {
+    "first_seen": "2026-11-11T21:06:17+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.14221": {
+    "first_seen": "2026-11-11T21:06:17+00:00",
+    "score": 9,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.14483": {
+    "first_seen": "2026-11-11T21:06:17+00:00",
+    "score": 8,
+    "tags": [
+      "cites:open-problems",
       "topic"
     ]
   },
