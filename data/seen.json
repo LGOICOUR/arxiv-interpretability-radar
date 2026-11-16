@@ -4150,6 +4150,13 @@
       "author:Neel Nanda"
     ]
   },
+  "2611.10123": {
+    "first_seen": "2026-11-16T23:15:00+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
   "2611.10297": {
     "first_seen": "2026-11-10T20:44:56+00:00",
     "score": 7,
@@ -4290,6 +4297,28 @@
     "score": null,
     "tags": [
       "author:David Bau"
+    ]
+  },
+  "2611.17958": {
+    "first_seen": "2026-11-16T23:15:00+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.18089": {
+    "first_seen": "2026-11-16T23:15:00+00:00",
+    "score": 9,
+    "tags": [
+      "cites:belief-state-geometry",
+      "topic"
+    ]
+  },
+  "2611.18514": {
+    "first_seen": "2026-11-16T23:15:00+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
     ]
   },
   "s2:1eb7fac67af5e0fbbd63ed51296ffbd198f75585": {
