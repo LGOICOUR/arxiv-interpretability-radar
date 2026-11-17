@@ -1563,6 +1563,13 @@
       "topic"
     ]
   },
+  "2606.26629": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
   "2606.26749": {
     "first_seen": "2026-06-29T16:56:04+00:00",
     "score": null,
@@ -4319,6 +4326,99 @@
     "score": 6,
     "tags": [
       "topic"
+    ]
+  },
+  "2611.18807": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.18933": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
+    ]
+  },
+  "2611.19176": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.19477": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.19499": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.20148": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.20371": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": 8,
+    "tags": [
+      "cites:belief-state-geometry",
+      "topic"
+    ]
+  },
+  "2611.20405": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.20441": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.21286": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": null,
+    "tags": [
+      "author:Cosma Shalizi"
+    ]
+  },
+  "2611.21307": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
+    ]
+  },
+  "2611.21348": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": 8,
+    "tags": [
+      "cites:open-problems",
+      "topic"
+    ]
+  },
+  "2611.21600": {
+    "first_seen": "2026-11-17T22:05:50+00:00",
+    "score": null,
+    "tags": [
+      "author:David Bau"
     ]
   },
   "s2:1eb7fac67af5e0fbbd63ed51296ffbd198f75585": {
