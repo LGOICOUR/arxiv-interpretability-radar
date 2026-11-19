@@ -4449,6 +4449,20 @@
       "author:Lucius Bushnaq"
     ]
   },
+  "2611.23403": {
+    "first_seen": "2026-11-19T22:00:13+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.24567": {
+    "first_seen": "2026-11-19T22:00:13+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
   "s2:1eb7fac67af5e0fbbd63ed51296ffbd198f75585": {
     "first_seen": "2026-09-23T18:17:16+00:00",
     "score": null,
@@ -4486,6 +4500,13 @@
   },
   "s2:8ced0f78d766ff861300f62846d025cd28fe7579": {
     "first_seen": "2026-08-14T14:52:02+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
+    ]
+  },
+  "s2:9914fe2399ed1ee32962418e4e4ff6d9a5f344f1": {
+    "first_seen": "2026-11-19T22:00:13+00:00",
     "score": null,
     "tags": [
       "cites:open-problems"
