@@ -4484,6 +4484,35 @@
       "topic"
     ]
   },
+  "2611.26711": {
+    "first_seen": "2026-11-24T01:30:51+00:00",
+    "score": 8,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.26832": {
+    "first_seen": "2026-11-24T01:30:51+00:00",
+    "score": 9,
+    "tags": [
+      "author:David Bau",
+      "topic"
+    ]
+  },
+  "2611.27079": {
+    "first_seen": "2026-11-24T01:30:51+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
+    ]
+  },
+  "2611.27353": {
+    "first_seen": "2026-11-24T01:30:51+00:00",
+    "score": null,
+    "tags": [
+      "cites:open-problems"
+    ]
+  },
   "s2:1eb7fac67af5e0fbbd63ed51296ffbd198f75585": {
     "first_seen": "2026-09-23T18:17:16+00:00",
     "score": null,
