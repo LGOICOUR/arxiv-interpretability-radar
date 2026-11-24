@@ -472,6 +472,13 @@
       "topic"
     ]
   },
+  "2604.23351": {
+    "first_seen": "2026-11-24T23:26:00+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
   "2604.27167": {
     "first_seen": "2026-10-20T18:25:29+00:00",
     "score": 8,
@@ -533,6 +540,13 @@
     "score": null,
     "tags": [
       "cites:open-problems"
+    ]
+  },
+  "2605.09887": {
+    "first_seen": "2026-11-24T23:26:00+00:00",
+    "score": 9,
+    "tags": [
+      "topic"
     ]
   },
   "2605.10938": {
@@ -687,6 +701,13 @@
     "score": null,
     "tags": [
       "cites:open-problems"
+    ]
+  },
+  "2605.24057": {
+    "first_seen": "2026-11-24T23:26:00+00:00",
+    "score": 9,
+    "tags": [
+      "topic"
     ]
   },
   "2605.24059": {
@@ -2602,6 +2623,13 @@
       "cites:open-problems"
     ]
   },
+  "2609.07681": {
+    "first_seen": "2026-11-24T23:26:00+00:00",
+    "score": 7,
+    "tags": [
+      "topic"
+    ]
+  },
   "2609.08189": {
     "first_seen": "2026-09-10T17:30:36+00:00",
     "score": null,
@@ -3317,6 +3345,13 @@
   "2610.12842": {
     "first_seen": "2026-10-12T22:00:19+00:00",
     "score": 9,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2610.12847": {
+    "first_seen": "2026-11-24T23:26:00+00:00",
+    "score": 10,
     "tags": [
       "topic"
     ]
@@ -4511,6 +4546,43 @@
     "score": null,
     "tags": [
       "cites:open-problems"
+    ]
+  },
+  "2611.29444": {
+    "first_seen": "2026-11-24T23:26:00+00:00",
+    "score": null,
+    "tags": [
+      "author:David Bau"
+    ]
+  },
+  "2611.29704": {
+    "first_seen": "2026-11-24T23:26:00+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.29715": {
+    "first_seen": "2026-11-24T23:26:00+00:00",
+    "score": 8,
+    "tags": [
+      "cites:belief-state-geometry",
+      "cites:constrained-belief-updates",
+      "topic"
+    ]
+  },
+  "2611.29843": {
+    "first_seen": "2026-11-24T23:26:00+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
+    ]
+  },
+  "2611.31015": {
+    "first_seen": "2026-11-24T23:26:00+00:00",
+    "score": 6,
+    "tags": [
+      "topic"
     ]
   },
   "s2:1eb7fac67af5e0fbbd63ed51296ffbd198f75585": {
